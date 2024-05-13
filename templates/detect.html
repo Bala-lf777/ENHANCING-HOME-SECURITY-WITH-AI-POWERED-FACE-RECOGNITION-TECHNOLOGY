@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detected Person</title>
+    <style>
+        /* Paste the CSS code here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+    </style>
+</head>
+<body><center>
+    <h1>Detected Person</h1>
+
+    {% if detected_persons %}
+    <h3>Detected Persons:</h3>
+    <ul>
+        {% for person in detected_persons %}
+                <li>
+                    <img src="{{ url_for('static', filename='thieft.jpg') }}" alt="Thief Image">
+                    <p>Name: {{ person.details.Name }}</p>
+                    <p>Age: {{ person.details.Age }}</p>
+                    <p>Crime: {{ person.details.Crime }}</p>
+                </li>
+            {% endfor %}
+    </ul>
+    {% else %}
+        <p>No persons detected.</p>
+    {% endif %}
+    </ul>
+</center>
+   
+</body>
+</html>
